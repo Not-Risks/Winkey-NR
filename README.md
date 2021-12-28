@@ -11,7 +11,7 @@ Captura la pulsaciones y las envia via correo electronico (gmail) cada 149 pulsa
 ------------
 
 
-##Ejecución
+## Ejecución
 - https://github.com/Not-Risks/dakndkjas
 - cd Winkey-NR
 - pip install request
